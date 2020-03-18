@@ -3,11 +3,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 
-from.views import index
+from.views import index, brand, design, dev, ui
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('brand/', brand),
+    path('design/', design),
+    path('dev/', dev),
+    path('ui/', ui),
 ]
 
 if settings.DEBUG:

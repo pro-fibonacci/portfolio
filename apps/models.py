@@ -1,7 +1,17 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 from django.contrib.auth import get_user_model
 # Create your models here.
 User = get_user_model
+
+
+class Author(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
 
 
 class Intro(models.Model):
@@ -36,28 +46,22 @@ class Portfolio(models.Model):
 
 
 class Services(models.Model):
-    ui/ux = models.TextField(max_length=50)
+    Ui = models.TextField(max_length=50)
     webdev = models.TextField(max_length=50)
     webdesign = models.TextField(max_length=50)
     brand = models.TextField(max_length=50)
 
-   def __str__(self):
-       return self.ui/ux 
-
-class Author(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    
     def __str__(self):
-        return self.user.username
+        return self.Ui
+
 
 class Testimonials(models.Model):
     text = models.TextField(max_length=50)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)       
-
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text
+
 
 class Clients(models.Model):
     client1 = models.ImageField()
